@@ -9,7 +9,7 @@ const Students = sequelize.define("students", {
         unique: true,
     },
     phone: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         primaryKey: true,
         unique: true,
         allowNull: false,

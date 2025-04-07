@@ -3,14 +3,14 @@ const express = require("express");
 const cors = require("cors");
 const sequelize = require("./db");
 const models = require("./models/models");
+const router = require("./routes/index");
 
 const app = express();
 const PORT = process.env.PORT;
 
+app.use(express.json());
 app.use(cors());
-app.get("/api", (req, res) => {
-    return res.json("123");
-});
+app.use("/api", router);
 
 const start = async () => {
     await sequelize.authenticate();
