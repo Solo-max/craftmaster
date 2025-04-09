@@ -1,39 +1,25 @@
+const ApiError = require("../Errors/ApiErrors");
 const { Students } = require("../models/models");
+const { validationResult } = require("express-validator");
 
 class StudentsController {
-    async authorization(req, res) {
+    async authorizationUser(req, res, next) {
         try {
-            const { role } = req.body;
-            if (role == "admin") {
-                const { password } = req.body;
-                if (password == "123") {
-                    return res.status(200).json({ message: "Вход одобрен" });
-                }
-                return res.status(400).json({ message: "Неверный пароль" });
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                throw ApiError.BadRquest("Ошибка валидации", errors.array());
             }
-            if (role == "user") {
-                const { phone, password } = req.body;
-                if (!phone || !password) {
-                    return res
-                        .status(400)
-                        .json({ message: "укажите пароль и телефон" });
-                }
-                const student = await Students.findOne({ where: { phone } });
-                if (student.length == 0) {
-                    return res
-                        .status(400)
-                        .json({ message: "Пользователь не найден" });
-                }
-                if (password != student.password) {
-                    return res
-                        .status(400)
-                        .json({ message: "Не верный пароль" });
-                }
-                return res.status(200).json(student);
+            const { phone, password } = req.body;
+            const student = await Students.findOne({ where: { phone } });
+            if (!student) {
+                throw ApiError.UnauthorizedUserError();
             }
-        } catch (error) {
-            console.log(error);
-            return res.status(500).json({ message: "Ошибка сервера" });
+            if (password != student.password) {
+                throw ApiError.UnauthorizedUserError();
+            }
+            return res.status(200).json(student);
+        } catch (err) {
+            next(err);
         }
     }
 }
