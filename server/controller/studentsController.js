@@ -10,6 +10,7 @@ class StudentsController {
                 throw ApiError.BadRquest("Ошибка валидации", errors.array());
             }
             const { phone, password } = req.body;
+            console.log(phone);
             const student = await Students.findOne({ where: { phone } });
             if (!student) {
                 throw ApiError.UnauthorizedUserError();
