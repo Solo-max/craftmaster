@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>CraftMaster - авторизация</title>
+<style>
+.btn{
+            font-size: 25px;
+            background-color: rgb(66, 159, 240);
+            color: black;
+            border: none;
+            padding: 32px 60px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+.btn:hover{
+                background-color: rgb(68, 229, 39);
+                }
+</style>
+
+<script>
+function test(){
+    console.log("Кнопка нажата");
+}
+    function resp(){
+    const requestData = {
+        phone: '71231231212',
+        password: '123',
+    };
+        fetch('http://localhost:5000/api/authUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        })
+            .then(response => response.json())
+            .then(data => console.log('Ответ сервера:', data))
+            .catch(error => console.error('Ошибка:', error));
+
+    }
+
+</script>
+
+
+</head>
+<body align = "center">
+    <img src="logo.png" height="30%"><br><br><br>
+<button onclick="resp()" class = "btn">Кабинет ученика</button>
+<br><br><br><br>
+<button onclick="test()" class = "btn" >Кабинет учителя</button>
+</body>
+
+</html>
