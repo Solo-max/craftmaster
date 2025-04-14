@@ -10,7 +10,6 @@ const Students = sequelize.define("students", {
     },
     phone: {
         type: DataTypes.STRING,
-        primaryKey: true,
         unique: true,
         allowNull: false,
     },
