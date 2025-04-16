@@ -1,0 +1,41 @@
+   .p{
+            font-size: 25;
+        }
+        input {
+    width: 100%; 
+    font-size: 35;
+    /*padding: 10px; */
+}
+        .btn {
+            font-size: 25px;
+            background-color: rgb(66, 159, 240);
+            color: black;
+            border: none;
+            padding: 32px 60px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .btn:hover {
+            background-color: rgb(68, 229, 39);
+        }
+
+        .btn2 {
+            font-size: 14px;
+            background-color: rgb(66, 159, 240);
+            color: black;
+            border: none;
+            padding: 10px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .btn2:hover {
+            background-color: rgb(68, 229, 39);
+        }
+        li{
+            margin-bottom: 1em;
+        }
+

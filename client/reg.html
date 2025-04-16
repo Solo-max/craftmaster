@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <title>CraftMaster - авторизация</title>
+    <link rel="stylesheet" href="styles.css">
+     <script>
+   
+    function reg() {
+        const inputField1 = document.getElementById('phone');
+        let Phone = inputFiel1d.value;
+        const inputField2 = document.getElementById('parent');
+        let Parent = inputField2.value;
+        const inputField3 = document.getElementById('student');
+        let Student = inputField3.value;
+        const inputField4 = document.getElementById('password');
+        let pass = inputField4.value;
+        const requestData = {
+            phone: Phone,
+            full_name_parent: full_name_parent,
+            full_name_student: Student,
+            password: pass,
+        };
+        fetch('http://localhost:5000/api/addUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        })
+            .then(response => response.json())
+            .then(data => console.log('Ответ сервера:', data))
+            .catch(error => console.error('Ошибка:', error));
+
+    }
+
+</script>
+
+
+</head>
+
+<body align="center">
+    <img src="logo.png" height="30%"><br><br>
+    <table border="0" width="60%" align="center">
+        <tr><td colspan="2"><p class="p" align = center>Регистрация нового учащегося:</p><br></td></tr>
+        <tr>
+            <td width = "40%"><p class="p">Номер телефона:</p></td>
+            <td><input type="text" id="phone" name="phone" width="100%"></td>
+        </tr>
+    <tr>
+        <td>  <p class="p">ФИО одного из родителей:</p> </td>
+        <td><input type="text" id="parent" name="parent" width="100%"></td>
+    </tr>
+   <tr>
+        <td>  <p class="p">ФИО учащегося:</p> </td>
+        <td><input type="text" id="student" name="student"></td>
+    </tr>
+<tr>
+        <td>  <p class="p">Пароль:</p> </td>
+        <td><input type="text" id="password" name="password"></td>
+    </tr>
+
+
+<tr>
+    <td colspan="2" align = center>
+        <br><button onclick="reg()" class="btn">зарегестрировать</button>
+    </td>
+</tr>
+
+    </table>
+</body>
+
+</html>
