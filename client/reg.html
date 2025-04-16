@@ -7,7 +7,7 @@
    
     function reg() {
         const inputField1 = document.getElementById('phone');
-        let Phone = inputFiel1d.value;
+        let Phone = inputField1.value;
         const inputField2 = document.getElementById('parent');
         let Parent = inputField2.value;
         const inputField3 = document.getElementById('student');
@@ -16,7 +16,7 @@
         let pass = inputField4.value;
         const requestData = {
             phone: Phone,
-            full_name_parent: full_name_parent,
+            full_name_parent: Parent,
             full_name_student: Student,
             password: pass,
         };
