@@ -10,7 +10,7 @@ class TeacherController {
             }
             const { password } = req.body;
             if (password != "123") {
-                throw ApiError.UnauthorizedAdminError();
+                throw ApiError.BadRquest("Не верный пароль");
             }
             return res.status(200).json({ message: "Вход одобрен" });
         } catch (err) {
