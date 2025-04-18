@@ -7,7 +7,7 @@
    
     function reg() {
         const inputField1 = document.getElementById('phone');
-        let Phone = inputFiel1d.value;
+        let Phone = inputField1.value;
         const inputField2 = document.getElementById('parent');
         let Parent = inputField2.value;
         const inputField3 = document.getElementById('student');
@@ -16,7 +16,7 @@
         let pass = inputField4.value;
         const requestData = {
             phone: Phone,
-            full_name_parent: full_name_parent,
+            full_name_parent: Parent,
             full_name_student: Student,
             password: pass,
         };
@@ -28,8 +28,12 @@
             body: JSON.stringify(requestData)
         })
             .then(response => response.json())
-            .then(data => console.log('Ответ сервера:', data))
-            .catch(error => console.error('Ошибка:', error));
+            .then(data =>{ 
+                
+                console.log('Ответ сервера:', data)
+
+            })
+            .catch(error => console.error('Ошибка сервера, это проблемы у нас. Свяжитесь с нами в Telegram и расскажите в чём проблема - исправим!:', error));
 
     }
 

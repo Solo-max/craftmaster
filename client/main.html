@@ -3,37 +3,31 @@
 <title>CraftMaster - авторизация</title>
 <link rel="stylesheet" href="styles.css">
 
-<script>
-function test(){
-    console.log("Кнопка нажата");
-}
-    function resp(){
-    const requestData = {
-        phone: '71231231212',
-        password: '123',
-    };
-        fetch('http://localhost:5000/api/authUser', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(requestData)
-        })
-            .then(response => response.json())
-            .then(data => console.log('Ответ сервера:', data))
-            .catch(error => console.error('Ошибка:', error));
-
-    }
+<script src="auth.js"> 
 
 </script>
 
-
 </head>
 <body align = "center">
-    <img src="logo.png" height="30%"><br><br><br>
-<button onclick="resp()" class = "btn">Кабинет ученика</button>
-<br><br><br><br>
-<button onclick="test()" class = "btn" >Кабинет учителя</button>
+<table border="0" width = "60%" align="center">
+  <tr><td colspan="2" align="center">  <img src="logo.png" width="20%"><br><br></td></tr>
+  <tr><td align="right"><p class="p" width = "50%">Номер телефона:</p></td>
+    <td>
+    <input type="number" id="phone" name="phone" width="30%"><br><br></td></tr>
+  
+    <tr><td align="right"><p class="p">Пароль:</p></td>
+    <td> 
+    <input type="password" id="pass" name="pass" width="30%"><br></td></tr>
+<tr>
+    <td colspan="2" align="center"><br><br>
+<button onclick="user()" class = "btn">Кабинет ученика</button>
+    </td></tr>
+    <tr>
+        <td colspan="2" align="center"><br><br>
+<button onclick="admin()" class = "btn" >Кабинет учителя</button>
+</td>
+</tr>
+</table>
 </body>
 
 </html>
