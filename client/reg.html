@@ -28,8 +28,12 @@
             body: JSON.stringify(requestData)
         })
             .then(response => response.json())
-            .then(data => console.log('Ответ сервера:', data))
-            .catch(error => console.error('Ошибка:', error));
+            .then(data =>{ 
+                
+                console.log('Ответ сервера:', data)
+
+            })
+            .catch(error => console.error('Ошибка сервера, это проблемы у нас. Свяжитесь с нами в Telegram и расскажите в чём проблема - исправим!:', error));
 
     }
 
