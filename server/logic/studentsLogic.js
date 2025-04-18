@@ -70,6 +70,11 @@ class StudentsLogic {
             user: studentDto,
         };
     }
+
+    async getStudent(id) {
+        const studentData = await Students.findOne({ where: { id } });
+        return studentData;
+    }
 }
 
 module.exports = new StudentsLogic();

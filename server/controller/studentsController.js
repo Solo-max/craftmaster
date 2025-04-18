@@ -2,6 +2,7 @@ const ApiError = require("../Errors/ApiErrors");
 const { Students } = require("../models/models");
 const { validationResult } = require("express-validator");
 const StudentsLogic = require("../logic/studentsLogic");
+const TokensLogic = require("../logic/tokensLogic");
 
 class StudentsController {
     async authorizationUser(req, res, next) {
@@ -61,6 +62,18 @@ class StudentsController {
                 httpOnly: true,
             });
             return res.status(200).json(studentData);
+        } catch (err) {
+            next(err);
+        }
+    }
+
+    async getHomePage(req, res, next) {
+        try {
+            const token = req.headers.authorization;
+            const accessToken = token.split(" ")[1];
+            const { id } = TokensLogic.validateAccessToken(accessToken);
+            const studentData = await StudentsLogic.getStudent(id);
+            res.status(200).json(studentData);
         } catch (err) {
             next(err);
         }

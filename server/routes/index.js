@@ -29,6 +29,7 @@ router.post(
     body("phone").notEmpty().withMessage("Телефон обязателен"),
     StudentsController.addUser
 );
+router.get("/homePage", authMiddleware, StudentsController.getHomePage);
 router.get("/getAllUsers", authMiddleware, StudentsController.getAllUsers);
 router.get("/refresh", StudentsController.refresh);
 
