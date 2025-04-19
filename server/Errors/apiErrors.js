@@ -8,10 +8,7 @@ module.exports = class ApiError extends Error {
     static BadRquest(message, errors = []) {
         return new ApiError(400, message, errors);
     }
-    static UnauthorizedUserError() {
-        return new ApiError(401, "Неверный телефон или пароль");
-    }
-    static UnauthorizedAdminError() {
-        return new ApiError(401, "Неверный пароль");
+    static UnauthorizedError() {
+        return new ApiError(401, "пользователь не авторизован");
     }
 };

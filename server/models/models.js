@@ -18,6 +18,20 @@ const Students = sequelize.define("students", {
     password: { type: DataTypes.STRING, allowNull: false },
 });
 
+const Tokens = sequelize.define("tokens", {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: { model: "students", key: "id" },
+    },
+    refreshToken: { type: DataTypes.STRING, allowNull: false },
+});
+
+Students.hasOne(Tokens, { foreignKey: "user_id" });
+Tokens.belongsTo(Students, { foreignKey: "user_id" });
+
 module.exports = {
     Students,
+    Tokens,
 };
